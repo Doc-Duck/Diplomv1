@@ -11,6 +11,7 @@ class CreateAppointment(BaseModel):
     client_full_name: str
     time_from: datetime
     time_to: datetime
+    doctor_id: int
 
 
 class ShowAppointment(TunedModel):
@@ -18,3 +19,4 @@ class ShowAppointment(TunedModel):
     client_full_name: str
     time_from: datetime
     time_to: datetime
+    doctor_id: int

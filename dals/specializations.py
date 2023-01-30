@@ -8,9 +8,10 @@ class SpecializationDAL:
     def __init__(self, db_session: AsyncSession):
         self.db_session = db_session
 
-    async def create_specialization(self, name: str) -> Specializations:
+    async def create_specialization(self, name: str, doctor_id: int) -> Specializations:
         new_specialization = Specializations(
-            name=name
+            name=name,
+            doctor_id=doctor_id,
         )
         print(new_specialization)
         self.db_session.add(new_specialization)

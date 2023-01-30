@@ -9,8 +9,10 @@ class TunedModel(BaseModel):
 class ShowSpecialization(TunedModel):
     specialization_id: int
     name: str
+    doctor_id: int
 
 
 class CreateSpecialization(BaseModel):
     name: str
+    doctor_id: int
 

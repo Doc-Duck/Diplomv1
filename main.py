@@ -1,6 +1,7 @@
 from fastapi import FastAPI, APIRouter
 from endpoints.specialization import specialization_router
 from endpoints.appointments import appointment_router
+from endpoints.doctors import doctors_router
 from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
 
@@ -21,8 +22,9 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-main_api_router.include_router(specialization_router, prefix='/specializations', tags=['specializations'])
-main_api_router.include_router(appointment_router, prefix='/appointments', tags=['appointments'])
+main_api_router.include_router(specialization_router, prefix='/specializations', tags=['Specializations'])
+main_api_router.include_router(appointment_router, prefix='/appointments', tags=['Appointments'])
+main_api_router.include_router(doctors_router, prefix='/doctors', tags=['Doctors'])
 app.include_router(main_api_router)
 
 if __name__ == '__main__':

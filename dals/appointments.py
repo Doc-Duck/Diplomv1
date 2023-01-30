@@ -10,11 +10,12 @@ class AppoinmentDAL:
         self.db_session = db_session
 
     async def create_appointment(self, client_name: str, dt_from: datetime.datetime,
-                                 dt_to: datetime.datetime) -> Appointments:
+                                 dt_to: datetime.datetime, doctor_id: int) -> Appointments:
         new_appointment = Appointments(
             client_full_name=client_name,
             time_from=dt_from,
             time_to=dt_to,
+            doctor_id=doctor_id,
         )
         self.db_session.add(new_appointment)
         await self.db_session.flush()

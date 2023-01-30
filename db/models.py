@@ -8,8 +8,8 @@ class Doctors(Base):
 
     doctor_id = Column(Integer, primary_key=True, index=True)
     full_name = Column(String(length=250), nullable=False)
-    specialization_id = Column(Integer, ForeignKey('specializations.specialization_id', ondelete='cascade'), nullable=False)
-    appointments_id = Column(Integer, ForeignKey('appointments.appointment_id', ondelete='cascade'), nullable=False)
+    specializations = relationship("Specializations")
+    appointments = relationship("Appointments")
 
 
 class Appointments(Base):
@@ -19,6 +19,7 @@ class Appointments(Base):
     client_full_name = Column(String(length=250), nullable=False)
     time_from = Column(DateTime(timezone=True), nullable=False)
     time_to = Column(DateTime(timezone=True), nullable=False)
+    doctor_id = Column(Integer, ForeignKey("doctors.doctor_id", ondelete='cascade'), nullable=True)
 
 
 class Specializations(Base):
@@ -26,3 +27,4 @@ class Specializations(Base):
 
     specialization_id = Column(Integer, primary_key=True, index=True)
     name = Column(String(length=250), nullable=False)
+    doctor_id = Column(Integer, ForeignKey("doctors.doctor_id", ondelete='cascade'), nullable=True)
