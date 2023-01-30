@@ -1,0 +1,17 @@
+version: "3.0"
+services:
+  db:
+    container_name: "database"
+    image: postgres:14.1-alpine
+    restart: always
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=diplomdbv1
+    ports:
+      - "32711:5432"
+    networks:
+      - custom
+networks:
+  custom:
+    driver: bridge
